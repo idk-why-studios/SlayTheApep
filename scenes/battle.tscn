@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dk3ia3tds6j3q"]
+[gd_scene load_steps=8 format=3 uid="uid://dk3ia3tds6j3q"]
 
-[ext_resource type="Texture2D" uid="uid://jdx8v0okt11e" path="res://resources/imgs/Backgrounds/battleBg.png" id="1_do3h7"]
 [ext_resource type="Script" path="res://scripts/battle.gd" id="1_uixfm"]
 [ext_resource type="PackedScene" uid="uid://bkury7chekvoc" path="res://scenes/player.tscn" id="3_0qj40"]
 [ext_resource type="PackedScene" uid="uid://bom0h5dk72m0l" path="res://scenes/enemy_1.tscn" id="4_abuq5"]
-[ext_resource type="Script" path="res://scripts/enemy_drop_zone.gd" id="7_0jfn7"]
 [ext_resource type="PackedScene" uid="uid://cmlt6kfioilcd" path="res://scenes/card_ui.tscn" id="8_adkc4"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gqjtb"]
@@ -435,14 +433,13 @@ func _get_card_data_by_nice_name(nice_name : String):
 "
 
 [node name="Battle" type="Node2D"]
-position = Vector2(301, 222)
+position = Vector2(739, 491)
 script = ExtResource("1_uixfm")
 
 [node name="Background" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_gqjtb")
 position = Vector2(274, 102)
 scale = Vector2(1.90429, 1.55396)
-texture = ExtResource("1_do3h7")
 metadata/_edit_lock_ = true
 
 [node name="PlayerDropZone" type="Control" parent="." node_paths=PackedStringArray("card_pile_ui")]
@@ -454,18 +451,16 @@ script = SubResource("GDScript_nk4vk")
 card_pile_ui = NodePath("../CardPileUI")
 
 [node name="Player" parent="PlayerDropZone" instance=ExtResource("3_0qj40")]
-position = Vector2(-148, 92)
+position = Vector2(-161, 67)
 
-[node name="EnemyDropzone" type="Control" parent="." node_paths=PackedStringArray("card_pile_ui")]
+[node name="EnemyDropzone" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("7_0jfn7")
-card_pile_ui = NodePath("../CardPileUI")
 
 [node name="Enemy1" parent="EnemyDropzone" instance=ExtResource("4_abuq5")]
-position = Vector2(701, 92)
+position = Vector2(698, 92)
 
 [node name="CardPileUI" type="Control" parent="."]
 layout_mode = 3
