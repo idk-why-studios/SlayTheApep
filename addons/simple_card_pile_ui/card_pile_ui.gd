@@ -1,29 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bswtmlrjao782"]
-
-[ext_resource type="Script" path="res://scripts/battle.gd" id="1_uixfm"]
-[ext_resource type="PackedScene" uid="uid://bkury7chekvoc" path="res://scenes/player.tscn" id="3_0qj40"]
-[ext_resource type="PackedScene" uid="uid://bom0h5dk72m0l" path="res://scenes/enemy_1.tscn" id="4_abuq5"]
-[ext_resource type="PackedScene" uid="uid://cmlt6kfioilcd" path="res://scenes/card_ui.tscn" id="8_adkc4"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gqjtb"]
-blend_mode = 3
-
-[sub_resource type="GDScript" id="GDScript_nk4vk"]
-script/source = "extends CardDropzone
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
-
-[sub_resource type="GDScript" id="GDScript_mj4l6"]
-script/source = "class_name CardPileUI extends Control
+class_name CardPileUI extends Control
 
 signal draw_pile_updated
 signal hand_pile_updated
@@ -49,30 +24,30 @@ enum PilesCardLayouts {
 	down
 }
 
-@export_file(\"*.json\") var json_card_database_path : String
-@export_file(\"*.json\") var json_card_collection_path : String
+@export_file("*.json") var json_card_database_path : String
+@export_file("*.json") var json_card_collection_path : String
 @export var extended_card_ui : PackedScene
 
-@export_group(\"Pile Positions\")
+@export_group("Pile Positions")
 @export var draw_pile_position = Vector2(20, 460)
 @export var hand_pile_position = Vector2(630, 460)
 @export var discard_pile_position = Vector2(1250, 460)
 
-@export_group(\"Pile Displays\")
+@export_group("Pile Displays")
 @export var stack_display_gap := 8
 @export var max_stack_display := 6
 
 
-@export_group(\"Cards\")
+@export_group("Cards")
 @export var card_return_speed := 0.15
 
-@export_group(\"Draw Pile\")
+@export_group("Draw Pile")
 @export var click_draw_pile_to_draw := true
 @export var cant_draw_at_hand_limit := true
 @export var shuffle_discard_on_empty_draw := true
 @export var draw_pile_layout := PilesCardLayouts.up
 
-@export_group(\"Hand Pile\")
+@export_group("Hand Pile")
 @export var hand_enabled := true
 @export var hand_face_up := true
 @export var max_hand_size := 10 # if any more cards are added to the hand, they are immediately discarded
@@ -85,7 +60,7 @@ enum PilesCardLayouts {
 @export var hand_vertical_curve : Curve
 #@export var drag_sort_enabled := true this would be nice to have, but based on how dragging works I'm not 100% sure how to handle it, possibly disable mouse input on the card being dragged? 
 
-@export_group(\"Discard Pile\")
+@export_group("Discard Pile")
 @export var discard_face_up := true
 @export var discard_pile_layout := PilesCardLayouts.up
 
@@ -108,26 +83,26 @@ func set_card_pile(card : CardUI, pile : Piles):
 	_maybe_remove_card_from_any_dropzones(card)
 	if pile == Piles.discard_pile:
 		_discard_pile.push_back(card)
-		emit_signal(\"discard_pile_updated\")
+		emit_signal("discard_pile_updated")
 	if pile == Piles.hand_pile:
 		_hand_pile.push_back(card)
-		emit_signal(\"hand_pile_updated\")
+		emit_signal("hand_pile_updated")
 	if pile == Piles.draw_pile:
 		_draw_pile.push_back(card)
-		emit_signal(\"draw_pile_updated\")
+		emit_signal("draw_pile_updated")
 	reset_target_positions()
 	
 func set_card_dropzone(card : CardUI, dropzone : CardDropzone):
 	_maybe_remove_card_from_any_piles(card)
 	_maybe_remove_card_from_any_dropzones(card)
 	dropzone.add_card(card)
-	emit_signal(\"card_added_to_dropzone\", dropzone, card)
+	emit_signal("card_added_to_dropzone", dropzone, card)
 	reset_target_positions()
 	
 func remove_card_from_game(card : CardUI):
 	_maybe_remove_card_from_any_piles(card)
 	_maybe_remove_card_from_any_dropzones(card)
-	emit_signal(\"card_removed_from_game\", card)
+	emit_signal("card_removed_from_game", card)
 	card.queue_free()
 	reset_target_positions()
 	
@@ -166,13 +141,13 @@ func get_card_pile_size(pile : Piles):
 func _maybe_remove_card_from_any_piles(card : CardUI):
 	if _hand_pile.find(card) != -1:
 		_hand_pile.erase(card)
-		emit_signal(\"hand_pile_updated\")
+		emit_signal("hand_pile_updated")
 	elif _draw_pile.find(card) != -1:
 		_draw_pile.erase(card)
-		emit_signal(\"draw_pile_updated\")
+		emit_signal("draw_pile_updated")
 	elif _discard_pile.find(card) != -1:
 		_discard_pile.erase(card)
-		emit_signal(\"discard_pile_updated\")
+		emit_signal("discard_pile_updated")
 		
 
 
@@ -194,15 +169,15 @@ func create_card_in_pile(nice_name : String, pile_to_add_to : Piles):
 
 func _maybe_remove_card_from_any_dropzones(card : CardUI):
 	var all_dropzones := []
-	_get_dropzones(get_tree().get_root(), \"CardDropzone\", all_dropzones)
+	_get_dropzones(get_tree().get_root(), "CardDropzone", all_dropzones)
 	for dropzone in all_dropzones:
 		if dropzone.is_holding(card):
 			dropzone.remove_card(card)
-			emit_signal(\"card_removed_from_dropzone\", dropzone, card)
+			emit_signal("card_removed_from_dropzone", dropzone, card)
 
 func get_card_dropzone(card : CardUI):
 	var all_dropzones := []
-	_get_dropzones(get_tree().get_root(), \"CardDropzone\", all_dropzones)
+	_get_dropzones(get_tree().get_root(), "CardDropzone", all_dropzones)
 	for dropzone in all_dropzones:
 		if dropzone.is_holding(card):
 			return dropzone
@@ -244,9 +219,9 @@ func _reset_card_collection():
 		_draw_pile.push_back(card_ui)
 		_draw_pile.shuffle()
 	_set_draw_pile_target_positions(true)
-	emit_signal(\"draw_pile_updated\")
-	emit_signal(\"hand_pile_updated\")
-	emit_signal(\"discard_pile_updated\")
+	emit_signal("draw_pile_updated")
+	emit_signal("hand_pile_updated")
+	emit_signal("discard_pile_updated")
 
 func _ready():
 	size = Vector2.ZERO
@@ -376,7 +351,7 @@ func is_any_card_ui_clicked():
 		if card_ui.is_clicked:
 			return true
 	var all_dropzones := []
-	_get_dropzones(get_tree().get_root(), \"CardDropzone\", all_dropzones)
+	_get_dropzones(get_tree().get_root(), "CardDropzone", all_dropzones)
 	for dropzone in all_dropzones:
 		for card in dropzone.get_held_cards():
 			if card.is_clicked:
@@ -415,12 +390,12 @@ func _create_card_ui(json_data : Dictionary):
 
 	card_ui.card_data = ResourceLoader.load(json_data.resource_script_path).new()
 	for key in json_data.keys():
-		if key != \"texture_path\" and key != \"backface_texture_path\" and key != \"resource_script_path\":
+		if key != "texture_path" and key != "backface_texture_path" and key != "resource_script_path":
 			card_ui.card_data[key] = json_data[key]
-	card_ui.connect(\"card_hovered\", func(c_ui): emit_signal(\"card_hovered\", c_ui))
-	card_ui.connect(\"card_unhovered\", func(c_ui): emit_signal(\"card_unhovered\", c_ui))
-	card_ui.connect(\"card_clicked\", func(c_ui): emit_signal(\"card_clicked\", c_ui))
-	card_ui.connect(\"card_dropped\", func(c_ui): emit_signal(\"card_dropped\", c_ui))
+	card_ui.connect("card_hovered", func(c_ui): emit_signal("card_hovered", c_ui))
+	card_ui.connect("card_unhovered", func(c_ui): emit_signal("card_unhovered", c_ui))
+	card_ui.connect("card_clicked", func(c_ui): emit_signal("card_clicked", c_ui))
+	card_ui.connect("card_dropped", func(c_ui): emit_signal("card_dropped", c_ui))
 	add_child(card_ui)
 	return card_ui
 
@@ -430,44 +405,3 @@ func _get_card_data_by_nice_name(nice_name : String):
 		if json_data.nice_name == nice_name:
 			return json_data
 	return null
-"
-
-[node name="Battle" type="Node2D"]
-position = Vector2(301, 222)
-script = ExtResource("1_uixfm")
-
-[node name="Background" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_gqjtb")
-position = Vector2(274, 102)
-scale = Vector2(1.90429, 1.55396)
-metadata/_edit_lock_ = true
-
-[node name="PlayerDropZone" type="Control" parent="." node_paths=PackedStringArray("card_pile_ui")]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = SubResource("GDScript_nk4vk")
-card_pile_ui = NodePath("../CardPileUI")
-
-[node name="Player" parent="PlayerDropZone" instance=ExtResource("3_0qj40")]
-position = Vector2(-148, 92)
-
-[node name="EnemyDropzone" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Enemy1" parent="EnemyDropzone" instance=ExtResource("4_abuq5")]
-position = Vector2(701, 92)
-
-[node name="CardPileUI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = SubResource("GDScript_mj4l6")
-json_card_database_path = "res://JSONS/database.json"
-json_card_collection_path = "res://JSONS/collections.json"
-extended_card_ui = ExtResource("8_adkc4")
