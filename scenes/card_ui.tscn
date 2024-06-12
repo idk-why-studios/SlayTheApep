@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmlt6kfioilcd"]
+
+[ext_resource type="Script" path="res://scripts/card_pile.gd" id="1_xjflh"]
+[ext_resource type="Texture2D" uid="uid://ca7nks8rqks1s" path="res://Card RPG UI&Charactors/card.jpg" id="2_wiymy"]
+
+[node name="CardUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xjflh")
+
+[node name="Backface" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 5.0
+offset_right = 460.0
+offset_bottom = 686.0
+texture = ExtResource("2_wiymy")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Frontface" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -16.0
+offset_right = 485.0
+offset_bottom = 678.0
+texture = ExtResource("2_wiymy")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CostTexture" type="TextureRect" parent="Frontface"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.698
+anchor_top = 0.07
+anchor_right = 0.833
+anchor_bottom = 0.161
+offset_left = -330.644
+offset_top = -47.58
+offset_right = -128.659
+offset_bottom = 64.42
+
+[node name="PowerTexture" type="TextureRect" parent="Frontface"]
+layout_mode = 0
+offset_left = 461.0
+offset_top = 1.0
+offset_right = 685.0
+offset_bottom = 148.0
+
+[node name="CostLabel" type="Label" parent="Frontface"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 55.0
+offset_right = 122.0
+offset_bottom = 174.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "cost
+
+"
+
+[node name="PowerLabel" type="Label" parent="Frontface"]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 49.0
+offset_right = 435.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "power"
+
+[node name="NameLabel" type="Label" parent="Frontface"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 528.0
+offset_right = 324.0
+offset_bottom = 673.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "name"

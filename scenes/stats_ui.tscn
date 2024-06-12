@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnomqhswdq53f"]
+
+[ext_resource type="Script" path="res://scripts/stats_ui.gd" id="1_ia4ip"]
+[ext_resource type="Texture2D" uid="uid://c2l0gx1nyj76v" path="res://Card RPG UI&Charactors/cursor.png" id="1_yolv2"]
+
+[sub_resource type="Theme" id="Theme_e4xv5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gsebt"]
+
+[node name="Stats_UI" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_e4xv5")
+script = ExtResource("1_ia4ip")
+
+[node name="Health" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HImage" type="TextureRect" parent="Health"]
+layout_mode = 2
+texture = ExtResource("1_yolv2")
+stretch_mode = 5
+
+[node name="HLabel" type="Label" parent="Health"]
+layout_mode = 2
+text = "50"
+label_settings = SubResource("LabelSettings_gsebt")

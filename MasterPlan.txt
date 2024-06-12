@@ -1,0 +1,105 @@
+*Attack Card
+damage cards
+
+*skill
+stat cards
+
+*Power
+MP recharge and heal
+
+Buff = Blessing | Debuff = Curse
+
+*status cards
+affects the cards of the other player
+
+*Global Buff
+Activates for the whole duration of the game.unlocks at each level
+
+==================================================================================================================
+
+Setting
+--------
+
+-we play as the son of apophis whose goal is to defeat the sun god Ra
+
+-x temples with predefined paths with one of the 12 gods at the end of the temple
+
+==================================================================================================================
+
+Team Apophis
+
+===============================================================================================================
+
+Types of Attack - PHY(physical), MGC(Magic), ELE(Elemental) [Fire, Water, Wind, Ground]
+===============================================================================================================
+
+Attacks
+---------
+Tackle - Deal x PHY damage
+Body Slam - Deal x PHY damage and get hurt y PHY damage
+Slash - Deal x PHY damage
+Double Slash - Deal 2x PHY damage
+Shadow Strike - Deal x PHY damage
+Upper Cut - Deal x PHY damage
+slice - deal x damage for zero energy
+
+Whirlwind - Deal x+y+z ELE damage
+Air Slash - Deal x ELE damage
+Fireball - Deal x ELE damage
+Hellflame - Deal 2x ELE damage
+Piercing Stream - Deal x ELE damage
+Striking Tide - Deal x ELE damage
+Earthquake - Deal x ELE damage
+
+
+
+===============================================================================================================
+
+Boss Attacks
+------------
+
+Set (god of chaos, sandstorms) :-
+Never-ending Nightmare - Deal x ELE damage and block PHY attacks from player
+Sandstorm - Deal x ELE damage and debuff the player
+Hellflame - Deal 2x ELE damage
+Chaotic Void - Remove buffs from player and debuffs from enemy
+Crimson slash - Deals x damage , 30% chance of bleed (removing y% HP)
+
+==============================================================================================================
+skill card
+--------------------
+
+war cry - draw one card and put from your hand onto the drop pile
+
+
+===========================================================================================================
+power card(attack+skill)
+
+deal x damage whenever you draw status or curse 
+sacrificial lamb - Deal x damage to yourself and have y blessing
+
+===========================================================================================================
+
+Enemies
+-------
+Enemies that steal mp,stamina,money etc
+
+
+
+
+===========================================================================================================
+
+RNG system
+------------
+
+Ra's army towers to clear and potentially obtain special rewards
+
+
+==============================================================================================================
+
+Ideas to probably add or remove
+-------------------------------
+
+* Upgrading cards
+* Conjoining cards
+* random events(stories from mythology)
