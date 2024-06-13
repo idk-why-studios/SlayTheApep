@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkury7chekvoc"]
+[gd_scene load_steps=8 format=3 uid="uid://bkury7chekvoc"]
 
 [ext_resource type="Texture2D" uid="uid://4xjgwh4kchht" path="res://assets/magician_2.png" id="1_dwt41"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uee5j"]
@@ -12,6 +12,10 @@ MAX_HEALTH = 10
 art = ExtResource("1_dwt41")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xauar"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xgrvy"]
+radius = 38.0
+height = 96.0
 
 [node name="Player" type="Node2D"]
 scale = Vector2(1.5, 1.5)
@@ -39,3 +43,9 @@ offset_left = -32.0
 offset_top = -127.333
 offset_right = 23.0
 offset_bottom = -87.3333
+
+[node name="PlayerArea" type="Area2D" parent="."]
+
+[node name="PlayerColl" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_xgrvy")

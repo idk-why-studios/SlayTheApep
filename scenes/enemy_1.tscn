@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bom0h5dk72m0l"]
+[gd_scene load_steps=8 format=3 uid="uid://bom0h5dk72m0l"]
 
 [ext_resource type="Texture2D" uid="uid://mvvudtioelug" path="res://assets/swordman_2.png" id="1_i07fm"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_oy6yb"]
@@ -12,6 +12,10 @@ MAX_HEALTH = 50
 art = ExtResource("1_i07fm")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ongvr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yfkyq"]
+radius = 45.3333
+height = 110.667
 
 [node name="Enemy1" type="Node2D"]
 scale = Vector2(1.5, 1.5)
@@ -38,3 +42,9 @@ offset_bottom = -61.3333
 theme_override_styles/fill = SubResource("StyleBoxFlat_ongvr")
 rounded = true
 show_percentage = false
+
+[node name="EnemyArea" type="Area2D" parent="."]
+
+[node name="EnemyColl" type="CollisionShape2D" parent="EnemyArea"]
+position = Vector2(4, -0.666667)
+shape = SubResource("CapsuleShape2D_yfkyq")

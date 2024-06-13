@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgdk44wyut7f4"]
+[gd_scene load_steps=3 format=3 uid="uid://bgdk44wyut7f4"]
 
 [ext_resource type="Texture2D" uid="uid://ca7nks8rqks1s" path="res://assets/card.jpg" id="1_pblie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkl68"]
+size = Vector2(127, 196)
 
 [node name="CardBase" type="TextureRect"]
 offset_right = 125.0
@@ -38,3 +41,9 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "DESCRIPTION"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CardArea" type="Area2D" parent="."]
+
+[node name="CardColl" type="CollisionShape2D" parent="CardArea"]
+position = Vector2(63.5, 98)
+shape = SubResource("RectangleShape2D_bkl68")
