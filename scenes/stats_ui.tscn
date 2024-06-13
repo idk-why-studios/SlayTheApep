@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bnomqhswdq53f"]
 
 [ext_resource type="Script" path="res://scripts/stats_ui.gd" id="1_ia4ip"]
-[ext_resource type="Texture2D" uid="uid://c2l0gx1nyj76v" path="res://Card RPG UI&Charactors/cursor.png" id="1_yolv2"]
+[ext_resource type="Texture2D" uid="uid://c2l0gx1nyj76v" path="res://assets/cursor.png" id="1_yolv2"]
 
 [sub_resource type="Theme" id="Theme_e4xv5"]
 
