@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgl4rp0w6ia7"]
+
+[ext_resource type="Script" path="res://addons/godot_card_layout/layouts/hand_layout/gcard_hand_layout.gd" id="1_sji32"]
+[ext_resource type="PackedScene" uid="uid://bgdk44wyut7f4" path="res://scenes/card_base.tscn" id="2_7t2pq"]
+
+[node name="HandDeck" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -71.0
+offset_top = -86.0
+offset_right = -31.0
+offset_bottom = -46.0
+
+[node name="GCardHandLayout" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_sji32")
+dynamic_radius = false
+enable_dragging = true
+
+[node name="CardBase" parent="GCardHandLayout" instance=ExtResource("2_7t2pq")]
+layout_mode = 0
+offset_left = -156.434
+offset_top = 12.3116
+offset_right = -31.4345
+offset_bottom = 208.312
+rotation = -0.15708
+
+[node name="CardBase2" parent="GCardHandLayout" instance=ExtResource("2_7t2pq")]
+layout_mode = 0
+offset_left = -52.336
+offset_top = 1.37048
+offset_right = 72.6641
+offset_bottom = 197.37
+rotation = -0.0523599
+
+[node name="CardBase3" parent="GCardHandLayout" instance=ExtResource("2_7t2pq")]
+layout_mode = 0
+offset_left = 52.336
+offset_top = 1.37048
+offset_right = 177.336
+offset_bottom = 197.37
+rotation = 0.0523599
+
+[node name="CardBase4" parent="GCardHandLayout" instance=ExtResource("2_7t2pq")]
+layout_mode = 0
+offset_left = 156.434
+offset_top = 12.3116
+offset_right = 281.434
+offset_bottom = 208.312
+rotation = 0.15708

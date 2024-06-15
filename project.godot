@@ -11,5 +11,14 @@ config_version=5
 [application]
 
 config/name="CardGame"
+run/main_scene="res://scenes/battle.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_card_layout/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkury7chekvoc"]
+[gd_scene load_steps=8 format=3 uid="uid://bkury7chekvoc"]
 
-[ext_resource type="Texture2D" uid="uid://4xjgwh4kchht" path="res://Card RPG UI&Charactors/magician_2.png" id="1_dwt41"]
+[ext_resource type="Texture2D" uid="uid://4xjgwh4kchht" path="res://assets/magician_2.png" id="1_dwt41"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uee5j"]
 [ext_resource type="PackedScene" uid="uid://bnomqhswdq53f" path="res://scenes/stats_ui.tscn" id="2_je2gw"]
-[ext_resource type="Script" path="res://custom_resources/Player_Stats.gd" id="2_k3rr0"]
+[ext_resource type="Script" path="res://scripts/Player_Stats.gd" id="2_k3rr0"]
 
 [sub_resource type="Resource" id="Resource_mpeif"]
 script = ExtResource("2_k3rr0")
@@ -12,6 +12,10 @@ MAX_HEALTH = 10
 art = ExtResource("1_dwt41")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xauar"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xgrvy"]
+radius = 38.0
+height = 96.0
 
 [node name="Player" type="Node2D"]
 scale = Vector2(1.5, 1.5)
@@ -23,13 +27,6 @@ position = Vector2(6, -5.33333)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_dwt41")
 
-[node name="Stats_UI" parent="." instance=ExtResource("2_je2gw")]
-offset_left = 303.333
-offset_top = -108.667
-offset_right = 358.333
-offset_bottom = -68.6671
-scale = Vector2(1.25, 1.25)
-
 [node name="ProgressBar" type="ProgressBar" parent="."]
 modulate = Color(0.853467, 0.264878, 0.224953, 1)
 custom_minimum_size = Vector2(100, 10)
@@ -40,3 +37,15 @@ offset_bottom = -68.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_xauar")
 rounded = true
 show_percentage = false
+
+[node name="Stats_UI" parent="." instance=ExtResource("2_je2gw")]
+offset_left = -32.0
+offset_top = -127.333
+offset_right = 23.0
+offset_bottom = -87.3333
+
+[node name="PlayerArea" type="Area2D" parent="."]
+
+[node name="PlayerColl" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_xgrvy")
